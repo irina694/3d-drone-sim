@@ -61,15 +61,6 @@ class Weighted_A_star(object):
         self.common = self.CLOSED1.intersection(self.CLOSED2)
         self.done = True
         self.Path = self.path()
-
-        for i in range(len(self.Path)):
-            start, end = self.Path[i]
-            s_x, s_y, s_z = start
-            t_x, t_y, t_z = end
-            print('Action #', i, ' vector = ', (t_x - s_x, t_y - s_y, t_z - s_z))
-
-
-
         visualization(self)
         plt.show()
 

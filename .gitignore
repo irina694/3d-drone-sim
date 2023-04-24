@@ -1,2 +1,6 @@
 .DS_Store
 .idea
+__pycache__
+algorithms/.idea
+algorithms/PathPlanning/.idea
+algorithms/PathPlanning/__pycache__
