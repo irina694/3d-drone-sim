@@ -52,25 +52,35 @@
             src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
     </script>
 </head>
+
+
 <body>
+
 <br />
 <h1 align="middle">CS 184/284A: 3D Drone Simulation</h1>
 <h2 align="middle">Project Milestone</h2>
-<h3 align="middle">Website URL: <a href="https://irina694.github.io/3d-drone-sim/">https://irina694.github.io/3d-drone-sim/</a>
+<h3 align="middle">Website URL: <a href="https://irina694.github.io/3d-drone-sim/" target="_blank">https://irina694.github.io/3d-drone-sim/</a>
 </h3>
+<h4 align="middle"><a href="https://irina694.github.io/3d-drone-sim/proposal/" target="_blank">Proposal</a></h4>
 
+<br/>
+<br/>
 
-<body>
+<h3 align="middle"><a href="https://docs.google.com/presentation/d/1mVzRrCvSJDVOQU4afqJZuRckyXut-lW2FiOzkCD_LVw/edit?usp=sharing" target="_blank">Presentation</a></h3>
 
+<h3 align="middle"><a href="/" target="_blank">TBD</a></h3>
+
+<br/>
+<br/>
 
 <div class="padded">
-    <h3 align="middle">Title: Realistic 3D drone path simulator in an urban environment</h3>
+    <h3 align="middle">Realistic 3D drone simulation with autonomous path planning</h3>
 </div>
 
 <div class="padded">
     <h2 align="middle">Summary</h2>
 
-    A 3D drone flight simulator incorporating open-source data (Google Earth) to path plan in realistic world scenarios. The simulation demo will be built in a free game engine Unreal Engine. For the purposes of this project, we will focus on 1 scenario and spend time comparing different path-planning algorithms to select the best path and add realism to the simulation such as constraints on where the drone can fly (for example, stay within the drone air space and don’t fly too close to buildings). The output would be a video of the virtual camera either following the drone path or on the drone itself that shows a realistic simulated 3D world and path planned around obstacles through certain points in space.
+    We are building a 3D drone flight simulator that incorporates open-source data from Google Earth to path plan in realistic world scenarios. The simulation demo is built in a free game engine Unreal Engine. For the purposes of this project, we are focusing on 1 scenario. The demo includes comparing different path-planning algorithms to select the best flight path. Next, we will add realism to the simulation such as constraints on where the drone can fly (for example, stay within the drone airspace and don’t fly too close to buildings). The output would be a video of the virtual camera following the drone path that shows a realistic simulated 3D world and paths planned around obstacles through certain points in space.
 
 </div>
 
@@ -79,159 +89,195 @@
     <p>
         <ul>
             <li>Irina Hallinan (284) <a href="mailto:irina_hallinan@berkeley.edu">irina_hallinan@berkeley.edu</a></li>
-            <li>Buyi Geng (284) <a href="mailto:uyikatarina@berkeley.edu">uyikatarina@berkeley.edu</a></li>
             <li>Tianyun Yuan (184) <a href="mailto:7ianyun@berkeley.edu">7ianyun@berkeley.edu</a></li>
+            <li>Buyi Geng (284) <a href="mailto:uyikatarina@berkeley.edu">uyikatarina@berkeley.edu</a></li>
             <li>Xinyu Deng (184) <a href="mailto:xinyudeng@berkeley.edu">xinyudeng@berkeley.edu</a></li>
         </ul>
+    </p>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Creating realistic drone simulations</h2>
+
+    <div align="middle">
+        <table style="width:100%">
+            <tr align="center">
+                <td>
+                    <img src="./images/drone_unsplash.jpg" align="middle" width="50%;" />
+                    <figcaption align="middle">Image credit: <a href="https://unsplash.com/photos/p_5BnqHfz3Y" target="_blank">Unsplash</a></figcaption>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <p>The idea is to make a 3D animated simulation of a drone flying in a realistic urban setting, such as a block in the city of San Francisco. The simulation loads a realistic 3D scene of an existing place available on Google Earth with obstacles such as buildings and trees. The challenge is to make the drone path realistic: i.e. follow certain rules and constraints in calculating the course while being fast (as it flies). The project explores different algorithms for path planning and compares the speed vs accuracy tradeoffs. The game engine automatically computes the flight path and displays it on the screen as the drone flies. The program outputs a video taken from the point of view of the drone to show a realistically rendered scene. We can tell the drone where to fly (which points of interest it should fly by) and record a video of the flight by following the drone. Additionally, we are implementing realistic animations such as the drone flying, rotors turning, etc..</p>
+
+    <p>
+        Simulating realistic drone flight could be helpful for drone operators or those who are thinking about buying a drone. Existing drone simulators such as Microsoft AirSim don’t have scenes based on real-world locations. Our goal is to provide a realistic scenario of flying a drone either manually or autonomously through a 3D model of a real scene. The simulation is physically accurate with drone rotors approximating how real drones are made and the physics of their flight. Potentially, this tool could be used to plan a flight path of a real drone in any location, given available data, such as Google Earth satellite imagery.
     </p>
 
 
 </div>
 
 <div class="padded">
-    <h2 align="middle">Problem Description</h2>
+    <h2 align="middle">Simulation Details</h2>
 
-<p>The idea is to make a 3D animated simulation of a drone flying in a realistic urban setting, such as the city of San Francisco. The simulation loads a realistic 3D scene of an existing place available on Google Earth with obstacles such as buildings and trees (and possibly cars or pedestrians). The challenge is to make the drone path realistic: i.e. follow certain rules and constraints in calculating the course while being fast (as it flies). The project will explore different algorithms for path planning and compare the speed vs accuracy tradeoffs. The game engine will automatically compute the flight path and will display it on the screen as the drone flies. The program outputs a video taken from the point of view of the drone to show a realistically rendered scene. We can tell the drone where to fly (which points of interest it should fly by) and take a video from a specific point of view.</p>
+    <ul>
+        <li>A 3D drone flight simulator incorporating open-source data from Google Earth to path plan in realistic world scenarios.</li>
+        <li>The simulation demo is built in a free game engine Unreal Engine 5.</li>
+        <li>We focus on 1 realistic scenario and use it to compare 4 path-planning algorithms to select the best flight path.</li>
+        <li>The simulation allows to compare several path-planning algorithms and choose the best path.</li>
+        <li>We plan to simulate failure modes such as drone crashing into obstacles.
+        To add realism to the simulation we will implement constraints on where the drone can fly and simulate environmental forces such as wind.</li>
 
-<p>Additionally, we will implement animation such as the drone flying, turning, etc. A virtual camera will follow the path of the drone as it flies or will be mounted on the drone itself.</p>
+    </ul>
+
+    <div align="middle">
+        <table style="width:100%">
+            <tr align="center">
+                <td>
+                    <img src="./images/drone_scene_unreal.png" align="middle" width="50%;" />
+                    <figcaption align="middle">Drone and scene in Unreal Engine</figcaption>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+<div class="padded">
+    <h2 align="middle">Realistic 3D environment: data collection & models
+    </h2>
+
+<p>Modeling realistic world scenes for the simulation involved several steps:</p>
+    <ol>
+        <li>Acquire Google Earth Studio data by recording a 360-degree video around a stationary point of any place on Earth.</li>
+        <li>Convert video data into a series of PNG frames (~100-150 images)</li>
+        <li>Convert a series of PNG frames into a dense 3D mesh and model in Meshroom photogrammetry open-source software.</li>
+        Scale the scene 3D model in Blender to have realistic proportions.</li>
+    </ol>
+</div>
+
+<div class="padded">
+    <h2 align="middle">Drone physics-based model & controls
+    </h2>
+
+<ul>
+    <li>We setup an animated drone model in UE5 that’s driven by physical thrusters with simulated propulsion, inertia, and torque, as opposed to a simple mesh controller.
+    </li>
+    <li>Each of the drone’s rotors are realistically driven by their corresponding motor forces, currently configurable through an in-scene GUI.</li>
+    <li>Because of our implementation, currently the drone cannot move by itself, as movement actions (going forward, backward, strafe, etc.) requires different combination of thrusting powers of each motor, depending on the current speed of acceleration of the drone. One potential plan is to use reinforcement learning to integrate automatic drone navigation within a small distance.</li>
+</ul>
 
 </div>
 
 <div class="padded">
-    <h2 align="middle">Relevant Topics from Graphics</h2>
 
-    <ul>
-        <li>Animation: we will animate the drone flying through the scene on the path we compute.</li>
-        <li>Kinematics: we will calculate the path the drone will fly through in 3D such that the targets lie on the path.</li>
-        <li>Collision Detection: we will calculate a path that avoids collisions with obstacles and the environment such as the drone doesn't crash.</li>
-        <li>Meshes: we will create 3D world assets like the drone and world scene in Unreal Engine and represent all objects as 3D meshes.</li>
-        </li>
-    </ul>
+    <h2 align="middle">Path Planning Algorithms</h2>
 
-
-</div>
-
-<div class="padded">
-    <h2 align="middle">Technical Concepts</h2>
-    <ul>
+    <ol>
+        <li>A*: In situations where obstacles are far and few in between and the drone needs to determine a pth rapidly, employing A* for path planning in Drone could be beneficial. These are situations in which of the drone needs to navigate. </li>
         <li>
-            Collision-detection can be implemented in different ways. In class, we used Bounding Volume Hierarchy to efficiently calculate if there’s an intersection between a ray and an object. We could use a different, newer collision-detection algorithm. The algorithm will need to be fast enough to run in real-time.
+            D* Lite: It would be beneficial for Drone to use D* Lite for path planning in situations where the environment is continuously changing and the drone needs to swiftly adjust to new obstacles.
+
         </li>
         <li>
-            Path tracing can be implemented in different ways. In class, we used Bezier curves and surfaces to find a smooth path through the start and end points by using control points. We can use a more sophisticated technique to find a smooth path through predefined targets in 3D such that the given constraints are met.
+            RRT*: In situations where the terrain is complicated and the drone needs to explore a broad region, employing RRT* for path planning in Drone could be beneficial. For the purpose of illustration, if Drone is going to be used for mapping or surveying in a highly populated urban setting, RRT* would be a good option for route planning.
         </li>
         <li>
-            We will learn how to integrate available Google Earth data into a Unreal Engine simulation.
+            RRT-Connect:
+            RRT-connect is a variant of the RRT* algorithm that is optimized for planning paths between two fixed points. It works well in scenarios where the drone needs to navigate through  a complex environment to reach a specific destination.
         </li>
-    </ul>
+    </ol>
+
+    <em>Comparison</em>
+
+<p>RRT-Connect is the most effective choice for path planning in a scenario where the drone needs to navigate through a complex environment to reach a specific destination</p>
+<p><em>Or</em></p>
+<p>Since the effectiveness of each algorithm will depend on the specific requirements of the scenario. A combination of different algorithms may also be used in different parts of the path planning process to optimize performance and effectiveness.
+</p>
+
 </div>
 
 <div class="padded">
     <h2 align="middle">Challenges</h2>
 
-<p>The most challenging part of this project would be to achieve path planning and animation that is realistic, fast, and accurate. All team members have little experience with animation, so learning the basics of Unreal Engine and animation in the allotted time will be a challenge.</p>
-
-</div>
-
-<div class="padded">
-    <h2 align="middle">Goals and Deliverables</h2>
-
-<p>We will create a 3D simulation of a drone flying through a realistic environment. We will be able to set and change parameters of the simulations, such as obstacles to avoid, the speed of the drone, and where the drone should fly by. As a final result, we will provide a video in which we will plot a path the drone will take and then the drone flying on that path. We will set limits on where the targets can be placed. The deliverable will be an interactive program built in Unreal Engine.</p>
-
-<p>We think it is realistic to accomplish building a small simulation like this because it synthesizes many concepts developed in class and class projects. We will not be building the simulation from scratch but rather, we would be using resources available to us in the course as well as publicly available libraries and the game engine.</p>
-
-<p>The final result would be a recorded video of different scenarios with the idea that the simulation can easily be extended to other Google Earth locations.</p>
-
-<p>We would measure success if we are able to create interactive components of the simulation, create a realistic path plan, and animate the drone flying through an interesting scene such as a busy San Francisco block.</p>
-
-</div>
-
-<div class="padded">
-
-    <h2 align="middle">Questions Planned to Answer</h2>
-
-    <ol>
-        <li>How to use Unreal Engine to make a realistic drone flight simulation (how to integrate Google Earth data into Unreal Engine).</li>
-        <li>
-            How to animate the drone and its motion in real-time?
-        </li>
-        <li>
-            How to plan a path the drone should take to avoid collisions and stay within the given constraints?
-        </li>
-    </ol>
-
-<p>We hope this simulation helps people flying real drones plan a path. Ideally, we would like to compare our simulated fly path to a real drone (if we can get one).</p>
-
-</div>
-
-<div class="padded">
-    <h2 align="middle">Primary Goals</h2>
-
 <p>What we plan to accomplish: a realistic simulation that can inform drone operators on where to fly in a complex environment.</p>
 
-    <ol>
-        <li>Create an interactive 3D scene from data in Google Earth in Unreal Engine.</li>
-        <li>Create the drone that automatically flies through the targets the user sets and stays within the constraints of the simulation (e.g.  drone doesn't crash).</li>
-        <li>Create a virtual camera that follows the drone as it flies to produce a video footage of the 3D scene.</li>
-    </ol>
+    <ul>
+        <li>Code integration into the same Unreal Engine project</li>
+        <li>Steep learning curve of Unreal Engine 5</li>
+        <li>Working across languages (Python and C++)</li>
+        <li>Getting high enough resolution on the scene images to construct a dense 3D mesh</li>
+    </ul>
 
 </div>
 
 <div class="padded">
-    <h2 align="middle">Additional Goals</h2>
+    <h2 align="middle">Contributions</h2>
 
-<p>If we have time, the simulation can be extended to more complex environments, and by adding other realistic simulation effects such as wind, moving cars, drone battery life, etc.</p>
+    <p>TBD</p>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Next Steps</h2>
+
+    <p>TBD</p>
 
 </div>
 
 <div class="padded">
 
-    <h2 align="middle">Schedule</h2>
+    <h2 align="middle">Updated Schedule</h2>
 
 <h3>4/6 - 4/12 Week 1</h3>
 
-<p>Setup Unreal Engine, gather Google Earth data, choose a complex scene, and integrate it into the engine as a 3D model.</p>
+<p>Setup Unreal Engine, gather Google Earth data, choose a complex scene to model. Find and integrate a realistic drone model into Unreal Engine. Research path planning algorithms.
+</p>
 
     <h3>4/13 - 4/19 Week 2</h3>
 
-<p>Develop basic path planning algorithm that avoids obstacles & passes through certain points given the 3D model of the scene. Compare/combine different algorithms based on speed and accuracy.</p>
+<p>Develop basic path planning algorithms that avoid obstacles & passes through certain points given the 3D model of the scene. Create physics-based drone controls and GUI. Integrate scene model into the engine.</p>
 
 <h3>4/20 - 4/26 Week 3</h3>
 
-<p>Add more complex constraints such as stay away from buildings, re-calculate the path if a new obstacle appears, account for battery life to return to start without crashing, etc.</p>
+<p>Integrate the path-planning algorithms into Unreal Engine. Possibly add reinforcement learning to the drone path planning. Visualize the paths for comparison; find the best (“smoothest”) path.
+</p>
 
 <h3>4/27 - 5/3 Week 4</h3>
 
-<p>Evaluate how well our simulation does compared to real drones (gather data or find available data/footage to compare with); prepare final deliverables (write-up, video, presentation).</p>
+<p> Add constraints and environmental effects; prepare final deliverables (paper, video, and presentation).</p>
 
 </div>
 
 <div class="padded">
-    <h2 align="middle">Resources we would need</h2>
+    <h2 align="middle">Resources and References</h2>
 
+    <p>Open source software:</p>
     <ul>
-        <li>Google Earth data for a specific location (such as San Francisco).</li>
-        <li>Unreal Engine to create the simulation.</li>
-        <li>FAA rules and regulations for UAV flight.</li>
+        <li>Blender v3.5</li>
+        <li>Google Earth Studio v1.7</li>
+        <li>Meshroom v2023.1.0</li>
+        <li>Unreal Engine v5.1.1 with UnrealImGui plugin v1.22 and Python API</li>
+        <li>Visual Studio 2022</li>
     </ul>
 
+    <p>Open source GitHub code:</p>
+    <ul>
+        <li><a href="https://github.com/zhm-real/PathPlanning/tree/master/Search_based_Planning/Search_3D" target="_blank">Search-based Path Planning</a></li>
+    </ul>
 
 </div>
 
-<div class="padded">
-    <h2 align="middle">Relevant Research</h2>
-
-    <ol>
-        <li>Microsoft AirSim built on Unreal Engine simulating drone flight: <a href="https://microsoft.github.io/AirSim/" target="_blank">https://microsoft.github.io/AirSim/</a> and <a href="https://github.com/microsoft/airsim" target="_blank">https://github.com/microsoft/airsim</a></li>
-        <li>Collision-avoidance and optimal flight path planning, such as improved Rapid-exploration Random Tree algorithm: <a target="_blank" href="https://www.hindawi.com/journals/ddns/2022/4544499/">https://www.hindawi.com/journals/ddns/2022/4544499/</a></li>
-        <li>Survey of collision-detection algorithms: <a href="http://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_colldect_survey2.pdf" target="_blank">http://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_colldect_survey2.pdf</a></li>
-    </ol>
-
-</div>
 
 <div class="padded">
     <h3 align="middle">Website URL: <a href="https://irina694.github.io/3d-drone-sim/">https://irina694.github.io/3d-drone-sim/</a></h3>
-
+    <h4 align="middle"><a href="https://irina694.github.io/proposal/">Proposal</a></h4>
 </div>
 
 
