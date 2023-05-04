@@ -57,10 +57,10 @@
 
 <br />
 <h1 align="middle">CS 184/284A: 3D Drone Simulation</h1>
-<h2 align="middle">Final Project</h2>
-<h3 align="middle">Website URL: <a href="https://irina694.github.io/3d-drone-sim/proposal">https://irina694.github.io/3d-drone-sim/proposal/</a>
-</h3>
-<h4 align="middle"><a href="https://irina694.github.io/3d-drone-sim/">3D drone Simulatio</a></h4>
+
+<h3 align="middle"><a href="https://irina694.github.io/3d-drone-sim/">Final Project</a></h3>
+<h4 align="middle"><a href="https://irina694.github.io/3d-drone-sim/milestone">Milestone</a></h4>
+<h4 align="middle"><a href="https://irina694.github.io/3d-drone-sim/proposal/">Proposal</a></h4>
 
 
 
@@ -80,7 +80,9 @@
 </div>
 
 <div class="padded">
-    Technical details of the project and our implementation are in the <a href="" target="_blank">paper</a>.
+    <h3>
+        Technical details of the project and our implementation are in the <a href="Drone_Sim_3D__CS_184_284A_Final_Paper.pdf" target="_blank">paper</a>.
+    </h3>
 </div>
 
 <div class="padded">
@@ -106,34 +108,7 @@
 
 </div>
 
-<div class="padded">
-    <h2 align="middle">Relevant Topics from Graphics</h2>
 
-    <ul>
-        <li>Animation: we animated the drone flying through the scene on the path we compute.</li>
-        <li>Kinematics: we calculated the path the drone will fly through in 3D such that the targets lie on the path.</li>
-        <li>Collision Detection: we calculated a path that avoids collisions with obstacles and the environment such as the drone doesn't crash.</li>
-        <li>Meshes: we created 3D world assets like the drone and world scene in Unreal Engine and represent all objects as 3D meshes.</li>
-        </li>
-    </ul>
-
-
-</div>
-
-<div class="padded">
-    <h2 align="middle">Technical Concepts</h2>
-    <ul>
-        <li>
-            Collision-detection can be implemented in different ways. In class, we used Bounding Volume Hierarchy to efficiently calculate if there’s an intersection between a ray and an object. Here, we used Unreal Engine 5 event detection system to trigger logic whenever a collision occurs.
-        </li>
-        <li>
-            Path tracing can be implemented in different ways. In class, we used Bezier curves and surfaces to find a smooth path through the start and end points by using control points. We can use a more sophisticated technique to find a smooth path through predefined targets in 3D such that the given constraints are met.
-        </li>
-        <li>
-            We learned how to integrate available Google Earth data into a Unreal Engine simulation.
-        </li>
-    </ul>
-</div>
 
 <div class="padded">
     <h2 align="middle">Challenges</h2>
@@ -167,25 +142,7 @@
 
 </div>
 
-<div class="padded">
-    <h2 align="middle">Primary Goals</h2>
 
-    <p>What we plan to accomplish: a realistic simulation that can inform drone operators on where to fly in a complex environment.</p>
-
-    <ol>
-        <li>Create an interactive 3D scene from data in Google Earth in Unreal Engine.</li>
-        <li>Create the drone that automatically flies through the targets the user sets and stays within the constraints of the simulation (e.g.  drone doesn't crash).</li>
-        <li>Create a virtual camera that follows the drone as it flies to produce a video footage of the 3D scene.</li>
-    </ol>
-
-</div>
-
-<div class="padded">
-    <h2 align="middle">Additional Goals</h2>
-
-    <p>If we have time, the simulation can be extended to more complex environments, and by adding other realistic simulation effects such as wind, moving cars, drone battery life, etc.</p>
-
-</div>
 
 
 <div class="padded">
@@ -193,7 +150,8 @@
 
     <ul>
         <li>Google Earth data for a specific location (such as San Francisco).</li>
-        <li>Unreal Engine to create the simulation.</li>
+        <li>Unreal Engine 5 to create the simulation.</li>
+        <li>ChatGPT to debug problems in Unreal Engine.</li>
     </ul>
 
 
