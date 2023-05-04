@@ -63,6 +63,9 @@
     <h3 align="middle">Realistic 3D Drone Simulation with Path Planning in Unreal Engine 5</h3>
 </div>
 
+<br/>
+<br/>
+
 <div class="padded">
     <h2 align="middle">Summary</h2>
 
@@ -70,7 +73,8 @@
 
 </div>
 
-<br>
+<br/>
+<br/>
 
 <div class="center" style="width:100%;text-align:center;margin:auto;">
     <iframe style="text-align:center;margin:auto;" width="560" height="315" src="https://www.youtube.com/embed/RWZuf3_bPjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -83,7 +87,9 @@
 </div>
 
 
-<h3 align="middle"><a href="https://docs.google.com/presentation/d/1pBqTsJZCgPRo1d5ze1cUHPy5c_wH6vMuZk4lr3rkyXg/edit?usp=sharing" target="_blank">Presentation</a> (Google Drive)</h3>
+<div class="padded text-center center m-auto">
+    <h3 align="middle"><a href="https://docs.google.com/presentation/d/1pBqTsJZCgPRo1d5ze1cUHPy5c_wH6vMuZk4lr3rkyXg/edit?usp=sharing" target="_blank">Presentation with videos </a> (Google Drive)</h3>
+</div>
 
 
 <div class="padded">
@@ -149,24 +155,32 @@
 <div class="padded">
     <h2 align="middle">Resources we used</h2>
 
+    <p>Open source software:</p>
     <ul>
-        <li>Google Earth data for a specific location (such as San Francisco).</li>
-        <li>Unreal Engine 5 to create the simulation.</li>
-        <li>ChatGPT to debug problems in Unreal Engine.</li>
+        <li>Blender v3.5</li>
+        <li>Google Earth Studio v1.7</li>
+        <li>Meshroom v2023.1.0</li>
+        <li>Unreal Engine v5.1.1 with UnrealImGui plugin v1.22 and Python API</li>
+        <li>Visual Studio 2022</li>
     </ul>
 
-
+    <p>Open source GitHub code:</p>
+    <ul>
+        <li><a href="https://github.com/zhm-real/PathPlanning/tree/master/Search_based_Planning/Search_3D" target="_blank">Search-based Path Planning</a></li>
+    </ul>
 </div>
 
+
 <div class="padded">
-    <h2 align="middle">Relevant Research</h2>
-
-    <ol>
-        <li>Microsoft AirSim built on Unreal Engine simulating drone flight: <a href="https://microsoft.github.io/AirSim/" target="_blank">https://microsoft.github.io/AirSim/</a> and <a href="https://github.com/microsoft/airsim" target="_blank">https://github.com/microsoft/airsim</a></li>
-        <li>Collision-avoidance and optimal flight path planning, such as improved Rapid-exploration Random Tree algorithm: <a target="_blank" href="https://www.hindawi.com/journals/ddns/2022/4544499/">https://www.hindawi.com/journals/ddns/2022/4544499/</a></li>
-        <li>Survey of collision-detection algorithms: <a href="http://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_colldect_survey2.pdf" target="_blank">http://graphics.stanford.edu/courses/cs164-09-spring/Handouts/paper_colldect_survey2.pdf</a></li>
-    </ol>
-
+    <h2 align="middle">Contributions</h2>
+    <ul>
+        <li>
+            Irina: 3D scene model from Google Earth; integration of model and drone in Unreal Engine. Failure mode of a drone crashing into obstacles.
+        </li>
+        <li> Tianyun: Integrated open-source drone model and texture into Unreal Engine. Animated drone rotors. Coded physical properties of drone. Camera perspective.</li>
+        <li> Buyi: Integrating four path planning algorithms, set the map frame rules and use the JSON file to build the interfaces for map reading and drone control.</li>
+        <li> Xinyu: Real Time Obstacle Detection, Integrating algorithm scripts into Unreal Engine, doing the comparisons for the four algorithms.</li>
+    </ul>
 </div>
 
 <div class="padded">
