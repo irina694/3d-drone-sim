@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <style>
+        body {
+            background-color: white;
+            padding: 5%;
+            width: 90%;
+            min-width: 90%;
+            float: left;
+            margin: auto;
+            text-align: left;
+            font-weight: 300;
+            font-family: 'Open Sans', sans-serif;
+            color: #121212;
+        }
+
+        div.padded {
+            padding-top: 0px;
+            padding-right: 10%;
+            padding-bottom: 0.5em;
+            padding-left: 10%;
+        }
+
+        .emphasis {
+            text-decoration: underline;
+        }
+
+
+        h1, h2, h3, h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        kbd {
+            color: #121212;
+        }
+    </style>
+    <title>CS 284A: 3D Drone Simulation</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+    </script>
+</head>
+
+
+<body>
+
+<br />
+<h1 align="middle">CS 184/284A: 3D Drone Simulation</h1>
+<h2 align="middle">Project Milestone</h2>
+<h3 align="middle">Website URL: <a href="https://irina694.github.io/3d-drone-sim/" target="_blank">https://irina694.github.io/3d-drone-sim/</a>
+</h3>
+<h4 align="middle"><a href="https://irina694.github.io/3d-drone-sim/proposal/" target="_blank">Proposal</a></h4>
+
+<br/>
+
+<br/>
+<br/>
+<div class="padded">
+    <h2 align="middle">Realistic 3D drone simulation with autonomous path planning</h2>
+</div>
+
+<div class="padded">
+
+    <div class="center" style="width:100%;text-align:center;margin:auto;">
+        <iframe style="text-align:center;margin:auto;" width="560" height="315" src="https://www.youtube.com/embed/wcfhr5bben8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+    <h3 align="middle"><a href="https://youtu.be/wcfhr5bben8" target="_blank">YouTube Link  </a></h3>
+
+    <h3 align="middle"><a href="https://docs.google.com/presentation/d/1mVzRrCvSJDVOQU4afqJZuRckyXut-lW2FiOzkCD_LVw/edit?usp=sharing" target="_blank">Presentation</a> (Google Drive)</h3>
+
+
+    <h2 align="middle">Summary</h2>
+
+    We are building a 3D drone flight simulator that incorporates open-source data from Google Earth to path plan in realistic world scenarios. The simulation demo is built in a free game engine Unreal Engine. For the purposes of this project, we are focusing on 1 scenario. The demo includes comparing different path-planning algorithms to select the best flight path. Next, we will add realism to the simulation such as constraints on where the drone can fly (for example, stay within the drone airspace and don’t fly too close to buildings). The output would be a video of the virtual camera following the drone path that shows a realistic simulated 3D world and paths planned around obstacles through certain points in space.
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Team Members</h2>
+    <p>
+        <ul>
+            <li>Irina Hallinan (284) <a href="mailto:irina_hallinan@berkeley.edu">irina_hallinan@berkeley.edu</a></li>
+            <li>Tianyun Yuan (184) <a href="mailto:7ianyun@berkeley.edu">7ianyun@berkeley.edu</a></li>
+            <li>Buyi Geng (284) <a href="mailto:uyikatarina@berkeley.edu">uyikatarina@berkeley.edu</a></li>
+            <li>Xinyu Deng (184) <a href="mailto:xinyudeng@berkeley.edu">xinyudeng@berkeley.edu</a></li>
+        </ul>
+    </p>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Creating realistic drone simulations</h2>
+
+    <div align="middle">
+        <table style="width:100%">
+            <tr align="center">
+                <td>
+                    <img src="../images/drone_unsplash.jpg" align="middle" width="50%;" />
+                    <figcaption align="middle">Image credit: <a href="https://unsplash.com/photos/p_5BnqHfz3Y" target="_blank">Unsplash</a></figcaption>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <p>The idea is to make a 3D animated simulation of a drone flying in a realistic urban setting, such as a block in the city of San Francisco. The simulation loads a realistic 3D scene of an existing place available on Google Earth with obstacles such as buildings and trees. The challenge is to make the drone path realistic: i.e. follow certain rules and constraints in calculating the course while being fast (as it flies). The project explores different algorithms for path planning and compares the speed vs accuracy tradeoffs. The game engine automatically computes the flight path and displays it on the screen as the drone flies. The program outputs a video taken from the point of view of the drone to show a realistically rendered scene. We can tell the drone where to fly (which points of interest it should fly by) and record a video of the flight by following the drone. Additionally, we are implementing realistic animations such as the drone flying, rotors turning, etc..</p>
+
+    <p>
+        Simulating realistic drone flight could be helpful for drone operators or those who are thinking about buying a drone. Existing drone simulators such as Microsoft AirSim don’t have scenes based on real-world locations. Our goal is to provide a realistic scenario of flying a drone either manually or autonomously through a 3D model of a real scene. The simulation is physically accurate with drone rotors approximating how real drones are made and the physics of their flight. Potentially, this tool could be used to plan a flight path of a real drone in any location, given available data, such as Google Earth satellite imagery.
+    </p>
+
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Simulation Details</h2>
+
+    <ul>
+        <li>A 3D drone flight simulator incorporating open-source data from Google Earth to path plan in realistic world scenarios.</li>
+        <li>The simulation demo is built in a free game engine Unreal Engine 5.</li>
+        <li>We focus on 1 realistic scenario and use it to compare 4 path-planning algorithms to select the best flight path.</li>
+        <li>The simulation allows to compare several path-planning algorithms and choose the best path.</li>
+        <li>We plan to simulate failure modes such as drone crashing into obstacles.
+        To add realism to the simulation we will implement constraints on where the drone can fly and possibly, environmental forces such as wind.</li>
+
+    </ul>
+
+    <div align="middle">
+        <table style="width:100%">
+            <tr align="center">
+                <td>
+                    <img src="../images/drone_scene_unreal.png" align="middle" width="50%;" />
+                    <figcaption align="middle">Drone and scene in Unreal Engine</figcaption>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+
+
+
+<div class="padded">
+    <h2 align="middle">Realistic 3D environment: data collection & models
+    </h2>
+
+<p>Modeling realistic world scenes for the simulation involved several steps:</p>
+    <ol>
+        <li>Acquire Google Earth Studio data by recording a 360-degree video around a stationary point of any place on Earth.</li>
+        <li>Convert video data into a series of PNG frames (~100-150 images)</li>
+        <li>Convert a series of PNG frames into a dense 3D mesh and model in Meshroom photogrammetry open-source software.</li>
+        Scale the scene 3D model in Blender to have realistic proportions.</li>
+    </ol>
+</div>
+
+<div class="padded">
+    <h2 align="middle">Drone physics-based model & controls
+    </h2>
+
+<ul>
+    <li>We setup an animated drone model in UE5 that’s driven by physical thrusters with simulated propulsion, inertia, and torque, as opposed to a simple mesh controller.
+    </li>
+    <li>Each of the drone’s rotors are realistically driven by their corresponding motor forces, currently configurable through an in-scene GUI.</li>
+    <li>Because of our implementation, currently the drone cannot move by itself, as movement actions (going forward, backward, strafe, etc.) requires different combination of thrusting powers of each motor, depending on the current speed of acceleration of the drone. One potential plan is to use reinforcement learning to integrate automatic drone navigation within a small distance.</li>
+</ul>
+
+</div>
+
+<div class="padded">
+
+    <h2 align="middle">Path Planning Algorithms</h2>
+
+    <ol>
+        <li>A*: In situations where obstacles are far and few in between and the drone needs to determine a pth rapidly, employing A* for path planning in Drone could be beneficial. These are situations in which of the drone needs to navigate. </li>
+        <li>
+            D* Lite: It would be beneficial for Drone to use D* Lite for path planning in situations where the environment is continuously changing and the drone needs to swiftly adjust to new obstacles.
+
+        </li>
+        <li>
+            RRT*: In situations where the terrain is complicated and the drone needs to explore a broad region, employing RRT* for path planning in Drone could be beneficial. For the purpose of illustration, if Drone is going to be used for mapping or surveying in a highly populated urban setting, RRT* would be a good option for route planning.
+        </li>
+        <li>
+            RRT-Connect:
+            RRT-connect is a variant of the RRT* algorithm that is optimized for planning paths between two fixed points. It works well in scenarios where the drone needs to navigate through  a complex environment to reach a specific destination.
+        </li>
+    </ol>
+
+    <em>Comparison</em>
+
+<p>RRT-Connect is the most effective choice for path planning in a scenario where the drone needs to navigate through a complex environment to reach a specific destination</p>
+<p><em>Or</em></p>
+<p>Since the effectiveness of each algorithm will depend on the specific requirements of the scenario. A combination of different algorithms may also be used in different parts of the path planning process to optimize performance and effectiveness.
+</p>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Challenges</h2>
+
+    <ul>
+        <li>Code integration into the same Unreal Engine project</li>
+        <li>Steep learning curve of Unreal Engine 5</li>
+        <li>Working across languages (Python and C++)</li>
+        <li>Getting high enough resolution on the scene images to construct a dense 3D mesh</li>
+    </ul>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Contributions</h2>
+
+    <div>
+        <ul>
+            <li>Irina: Gathered Google Earth data, created 3D scene model, and integrated the model into Unreal Engine. Started integration of Python scripts into Unreal Engine.</li>
+            <li>Tianyun: Integrated open-source drone model and texture into Unreal Engine. Animated drone rotors. Coded physical properties of drone.</li>
+            <li>Buyi: Integrating four path planning algorithms, set the map frame rules and producing the JSON file.</li>
+            <li>Xinyu: Integrating algorithm scripts into Unreal Engine, doing the comparisons for the four algorithms.</li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Next Steps</h2>
+
+    <div>
+       <ul>
+           <li>Irina: Add constraints and visual warnings if drone is close to an obstacle. Improve 3D scene mesh/model resolution.</li>
+           <li>Tianyun: Add a moving heuristic to the drone. Possibly use Reinforcement Learning to make a drone agent that navigates the drone around the scene.</li>
+           <li>Buyi: conduct python script with UE, output a JSON file for UE drone controller, and make the whole processing automatic. Accelerate the path planning (depends on the obstacles JSON file).</li>
+           <li>Xinyu: Visualize four path algorithms for comparison in Unreal Engine. More specifically obstacle detection. transform the 3D mesh input to obstacles JSON file for Python script.</li>
+       </ul>
+    </div>
+
+</div>
+
+<div class="padded">
+
+    <h2 align="middle">Updated Schedule</h2>
+
+<h3>4/6 - 4/12 Week 1</h3>
+
+<p>Setup Unreal Engine, gather Google Earth data, choose a complex scene to model. Find and integrate a realistic drone model into Unreal Engine. Research path planning algorithms.
+</p>
+
+    <h3>4/13 - 4/19 Week 2</h3>
+
+<p>Develop basic path planning algorithms that avoid obstacles & passes through certain points given the 3D model of the scene. Create physics-based drone controls and GUI. Integrate scene model into the engine.</p>
+
+<h3>4/20 - 4/26 Week 3</h3>
+
+<p>Integrate the path-planning algorithms into Unreal Engine. Possibly add reinforcement learning to the drone path planning. Visualize the paths for comparison; find the best (“smoothest”) path.
+</p>
+
+<h3>4/27 - 5/3 Week 4</h3>
+
+<p> Add constraints and environmental effects; prepare final deliverables (paper, video, and presentation).</p>
+
+</div>
+
+<div class="padded">
+    <h2 align="middle">Resources and References</h2>
+
+    <p>Open source software:</p>
+    <ul>
+        <li>Blender v3.5</li>
+        <li>Google Earth Studio v1.7</li>
+        <li>Meshroom v2023.1.0</li>
+        <li>Unreal Engine v5.1.1 with UnrealImGui plugin v1.22 and Python API</li>
+        <li>Visual Studio 2022</li>
+    </ul>
+
+    <p>Open source GitHub code:</p>
+    <ul>
+        <li><a href="https://github.com/zhm-real/PathPlanning/tree/master/Search_based_Planning/Search_3D" target="_blank">Search-based Path Planning</a></li>
+    </ul>
+
+</div>
+
+
+<div class="padded">
+    <h3 align="middle">Website URL: <a href="https://irina694.github.io/3d-drone-sim/">https://irina694.github.io/3d-drone-sim/</a></h3>
+    <h4 align="middle"><a href="https://irina694.github.io/3d-drone-sim/proposal/">Proposal</a></h4>
+</div>
+
+
+</body>
+</html>
